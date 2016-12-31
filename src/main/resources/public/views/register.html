@@ -1,0 +1,57 @@
+<div data-ui-view="header"></div>
+<h2 class="text-center">REGISTRATION FORM</h2>
+<div class="row space-40">
+	<div class="form col-xs-10 col-sm-10 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 col-xs-offset-1 col-sm-offset-1">
+		<div data-ng-if="successfullyRegistered" class="alert alert-success text-center" role="alert"><b>{{successfullyRegisteredMessage}} </b> &nbsp; <img class="loading" src="img/loading.gif" /></div>
+		<div data-ng-if="registrationError" class="alert alert-danger text-center" role="alert"><b>{{registrationErrorMessage}}</b></div>
+		<form name="registerForm" data-ng-submit="register(registerForm, user)" novalidate="novalidate">
+		  <div class="form-group">
+		    <label for="name">Name</label>
+		    <input type="text" name="name" class="form-control" placeholder="Full Name" data-ng-model="user.name" data-ng-minlength="2" data-ng-maxlength="30" data-ng-pattern="/^[A-Za-z]([-']?[A-Za-z]+)*( [A-Za-z]([-']?[A-Za-z]+)*)+$/" required />
+		    <div class="error-message text-center" data-ng-messages="registerForm.name.$error">
+			    <div data-ng-if="registerForm.name.$touched" data-ng-message="required">Please enter full name</div>
+			    <div data-ng-message="pattern">Please enter first name followed by middle name or surname</div>
+			    <div data-ng-message="minlength">Name too short</div>
+			    <div data-ng-message="maxlength">Name too long</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="username">Username</label>
+		    <input type="text" name="username" class="form-control" placeholder="User Name" data-ng-model="user.username" data-ng-minlength="2" data-ng-maxlength="30" data-ng-pattern="/^[a-z0-9]+$/" required />
+		    <div class="error-message text-center"data-ng-messages="registerForm.username.$error">
+			    <div data-ng-if="registerForm.username.$touched" data-ng-message="required">Please enter user name</div>
+			    <div data-ng-message="pattern">Please enter a valid user name(special characters and capital letters are not allowed)</div>
+			    <div data-ng-message="minlength">Name too short</div>
+			    <div data-ng-message="maxlength">Name too long</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="email">Email address</label>
+		    <input type="email" name="email" class="form-control" placeholder="Email" data-ng-model="user.email" data-ng-pattern="/\S+@\S+\.\S+/" required />
+		    <div class="error-message text-center"data-ng-messages="registerForm.email.$error">
+			    <div data-ng-if="registerForm.email.$touched" data-ng-message="required">Please enter email address</div>
+			    <div data-ng-message="pattern">Please enter valid Email Address</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="password">Password</label>
+		    <input type="password" name="password" class="form-control" placeholder="Password" data-ng-model="user.password" required />
+		    <div class="error-message text-center"data-ng-messages="registerForm.password.$error">
+			    <div data-ng-if="registerForm.password.$touched" data-ng-message="required">Please enter password</div>
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label for="cnf_password">Confirm Password</label>
+		    <input type="password" name="cnf_password" class="form-control" placeholder="Confirm Password" data-ng-model="cnf_password" required />
+		    <div class="error-message text-center"data-ng-messages="registerForm.cnf_password.$error">
+			    <div data-ng-if="registerForm.cnf_password.$touched" data-ng-message="required">Please enter confirm password</div>
+			</div>
+		  </div>
+		  <div class="space-20"></div>
+		  <div class="form-group text-center">
+		  	<button type="submit" class="btn btn-default login-submit">REGISTER</button>
+	  	  </div>
+		</form>
+	</div>
+</div>
+<div class="space-40"></div>
